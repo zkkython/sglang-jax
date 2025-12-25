@@ -12,6 +12,7 @@ from jax._src import mesh as mesh_lib
 from jax.sharding import NamedSharding
 from jax.sharding import PartitionSpec as P
 
+from python.sgl_jax.srt.model_executor.base_model_runner import BaseModelRunner
 from sgl_jax.srt.configs.load_config import LoadConfig
 from sgl_jax.srt.configs.model_config import AttentionArch, MockModelConfig, ModelConfig
 from sgl_jax.srt.layers.logits_processor import LogitsMetadata, LogitsProcessorOutput
@@ -58,7 +59,7 @@ class RankZeroFilter(logging.Filter):
         return True
 
 
-class ModelRunner:
+class ModelRunner(BaseModelRunner):
     """ModelRunner runs the forward passes of the models."""
 
     def __init__(
